@@ -247,7 +247,7 @@ Printer.prototype.horizontalLine = function(length) {
 	return this.writeCommands(commands);
 };
 
-Printer.prototype.printLine = function (text) {
+Printer.prototype.printText = function (text) {
 	var _self = this;
 	var chars = text.split('');
 	var commands = [];
@@ -290,8 +290,11 @@ Printer.prototype.printLine = function (text) {
 				}
 			}
 	});
-	commands.push(10);
 	return this.writeCommands(commands);
+};
+
+Printer.prototype.printLine = function(text) {
+	return this.printText(text).writeCommand(10);
 };
 
 Printer.prototype.printImage = function(path){
