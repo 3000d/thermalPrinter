@@ -294,7 +294,10 @@ Printer.prototype.printText = function (text) {
 };
 
 Printer.prototype.printLine = function(text) {
-	return this.printText(text).writeCommand(10);
+	if(text) {
+		this.printText(text);
+	}
+	return this.writeCommand(10);
 };
 
 Printer.prototype.printImage = function(path){
